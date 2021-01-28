@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SBG_AIR_DATA 638
 
-MAVPACKED(
+
 typedef struct __mavlink_sbg_air_data_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  uint32_t time_stamp; /*< [us] Time since sensor is powered up us.*/
@@ -18,7 +18,7 @@ typedef struct __mavlink_sbg_air_data_t {
  uint8_t pressure_diff_valid; /*<  True if the differential pressure field is filled and valid.*/
  uint8_t air_speed_valid; /*<  True if the true airspeed field is filled and valid.*/
  uint8_t air_temperature_valid; /*<  True if the output air temperature field is filled and valid.*/
-}) mavlink_sbg_air_data_t;
+} mavlink_sbg_air_data_t;
 
 #define MAVLINK_MSG_ID_SBG_AIR_DATA_LEN 38
 #define MAVLINK_MSG_ID_SBG_AIR_DATA_MIN_LEN 38

@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_INPUT_WRAPPER_DEFINITION 600
 
-MAVPACKED(
+
 typedef struct __mavlink_input_wrapper_definition_t {
  double setpoint; /*< [m]  Desired depth (ho) */
  double ultrasound_measurement; /*< [m]  Measurement obtained by ultrasound sensor */
@@ -13,7 +13,7 @@ typedef struct __mavlink_input_wrapper_definition_t {
  double ki; /*<   Integral constant */
  double kd; /*<   Derivative constant */
  double rudderlength; /*< [m]  Length of overall rudder */
-}) mavlink_input_wrapper_definition_t;
+} mavlink_input_wrapper_definition_t;
 
 #define MAVLINK_MSG_ID_INPUT_WRAPPER_DEFINITION_LEN 64
 #define MAVLINK_MSG_ID_INPUT_WRAPPER_DEFINITION_MIN_LEN 64

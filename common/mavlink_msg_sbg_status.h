@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SBG_STATUS 628
 
-MAVPACKED(
+
 typedef struct __mavlink_sbg_status_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  uint32_t time_stamp; /*< [us] Time since sensor is powered up us.*/
@@ -37,7 +37,7 @@ typedef struct __mavlink_sbg_status_t {
  uint8_t mag_recv; /*<  AIDING_MAG_RECV true when valid Magnetometer data is received.*/
  uint8_t odo_recv; /*<  AIDING_ODO_RECV true when Odometer pulse is received.*/
  uint8_t dvl_recv; /*<  AIDING_DVL_RECV true when valid DVL data is received*/
-}) mavlink_sbg_status_t;
+} mavlink_sbg_status_t;
 
 #define MAVLINK_MSG_ID_SBG_STATUS_LEN 42
 #define MAVLINK_MSG_ID_SBG_STATUS_MIN_LEN 42

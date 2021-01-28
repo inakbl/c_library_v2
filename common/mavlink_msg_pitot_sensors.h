@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_PITOT_SENSORS 615
 
-MAVPACKED(
+
 typedef struct __mavlink_pitot_sensors_t {
  float pt_rudder; /*< [Pa]  Total pressure of pitot 1 */
  float ps_rudder; /*< [Pa]  Static pressure of pitot 1 */
@@ -18,7 +18,7 @@ typedef struct __mavlink_pitot_sensors_t {
  float vel_port[3]; /*< [m/s]  3D array fluid velocity of pitot 3 */
  float atm_port; /*< [Pa]  Atmospheric pressure of pitot 3 */
  float pressure_atm; /*< [Pa]  Atmospheric pressure (average between the three pitot values) */
-}) mavlink_pitot_sensors_t;
+} mavlink_pitot_sensors_t;
 
 #define MAVLINK_MSG_ID_PITOT_SENSORS_LEN 76
 #define MAVLINK_MSG_ID_PITOT_SENSORS_MIN_LEN 76

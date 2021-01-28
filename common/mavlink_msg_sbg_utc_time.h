@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SBG_UTC_TIME 633
 
-MAVPACKED(
+
 typedef struct __mavlink_sbg_utc_time_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  uint32_t time_stamp; /*< [us] Time since sensor is powered up us.*/
@@ -19,7 +19,7 @@ typedef struct __mavlink_sbg_utc_time_t {
  uint8_t hour; /*<  Hour in day [0 ... 23].*/
  uint8_t min; /*<  Minute in hour [0 ... 59].*/
  uint8_t sec; /*<  Second in minute [0 ... 60], Note 60 is when a leap second is added.*/
-}) mavlink_sbg_utc_time_t;
+} mavlink_sbg_utc_time_t;
 
 #define MAVLINK_MSG_ID_SBG_UTC_TIME_LEN 31
 #define MAVLINK_MSG_ID_SBG_UTC_TIME_MIN_LEN 31

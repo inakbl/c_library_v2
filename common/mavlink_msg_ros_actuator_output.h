@@ -3,12 +3,12 @@
 
 #define MAVLINK_MSG_ID_ROS_ACTUATOR_OUTPUT 609
 
-MAVPACKED(
+
 typedef struct __mavlink_ros_actuator_output_t {
  float angle_set_maxon[5]; /*< [deg]  aoa output to be set to Maxon */
  uint8_t enable_torque; /*<   enable torque on Maxon actuators */
  uint8_t cyclic_sync_mode; /*<   enable Cyclic Sync Position mode */
-}) mavlink_ros_actuator_output_t;
+} mavlink_ros_actuator_output_t;
 
 #define MAVLINK_MSG_ID_ROS_ACTUATOR_OUTPUT_LEN 22
 #define MAVLINK_MSG_ID_ROS_ACTUATOR_OUTPUT_MIN_LEN 22

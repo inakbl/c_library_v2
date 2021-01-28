@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_ACTUATOR_STATUS 608
 
-MAVPACKED(
+
 typedef struct __mavlink_actuator_status_t {
  uint64_t index; /*<   Cycle number. */
  uint64_t timestamp; /*< [us]  Timestamp. */
@@ -16,7 +16,7 @@ typedef struct __mavlink_actuator_status_t {
  uint8_t target_state[5]; /*<   The uavcan driver state machine state. */
  int8_t actuator_idle[5]; /*<   Number of consecutive cycles not communicating. */
  uint8_t motors_state; /*<   Whether actuators are enabled or disabled. 0: Stopped 1: Running. */
-}) mavlink_actuator_status_t;
+} mavlink_actuator_status_t;
 
 #define MAVLINK_MSG_ID_ACTUATOR_STATUS_LEN 62
 #define MAVLINK_MSG_ID_ACTUATOR_STATUS_MIN_LEN 62

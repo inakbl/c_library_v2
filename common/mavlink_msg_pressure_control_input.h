@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_PRESSURE_CONTROL_INPUT 602
 
-MAVPACKED(
+
 typedef struct __mavlink_pressure_control_input_t {
  float measure_pressure; /*<   Pressure read */
  float kp; /*<   P term of PID control */
@@ -20,7 +20,7 @@ typedef struct __mavlink_pressure_control_input_t {
  uint8_t control_enabled; /*<   (BOOL) Flag to activate control */
  uint8_t enable_torque; /*<   (BOOL) Activate torque */
  uint8_t config_mode; /*<   (BOOL) Activate config mode */
-}) mavlink_pressure_control_input_t;
+} mavlink_pressure_control_input_t;
 
 #define MAVLINK_MSG_ID_PRESSURE_CONTROL_INPUT_LEN 51
 #define MAVLINK_MSG_ID_PRESSURE_CONTROL_INPUT_MIN_LEN 51

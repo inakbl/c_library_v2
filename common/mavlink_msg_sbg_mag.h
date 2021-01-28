@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SBG_MAG 634
 
-MAVPACKED(
+
 typedef struct __mavlink_sbg_mag_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  uint32_t time_stamp; /*< [us] Time since sensor is powered up us.*/
@@ -18,7 +18,7 @@ typedef struct __mavlink_sbg_mag_t {
  uint8_t mags_in_range; /*<  True if magnetometer is not saturated*/
  uint8_t accels_in_range; /*<  True if accelerometer is not saturated*/
  uint8_t calibration; /*<  True if magnetometer seems to be calibrated*/
-}) mavlink_sbg_mag_t;
+} mavlink_sbg_mag_t;
 
 #define MAVLINK_MSG_ID_SBG_MAG_LEN 45
 #define MAVLINK_MSG_ID_SBG_MAG_MIN_LEN 45

@@ -3,13 +3,13 @@
 
 #define MAVLINK_MSG_ID_MAXON_POWER_STATE 625
 
-MAVPACKED(
+
 typedef struct __mavlink_maxon_power_state_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  int32_t current[5]; /*< [mA]  Current as reported by Epos devices. */
  float voltage[5]; /*< [mV]  Voltage as reported by Epos devices. */
  float temperature[5]; /*< [deg]  Temperature as reported by Epos devices. */
-}) mavlink_maxon_power_state_t;
+} mavlink_maxon_power_state_t;
 
 #define MAVLINK_MSG_ID_MAXON_POWER_STATE_LEN 68
 #define MAVLINK_MSG_ID_MAXON_POWER_STATE_MIN_LEN 68

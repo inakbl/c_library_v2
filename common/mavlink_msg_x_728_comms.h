@@ -3,13 +3,13 @@
 
 #define MAVLINK_MSG_ID_X_728_COMMS 626
 
-MAVPACKED(
+
 typedef struct __mavlink_x_728_comms_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  float voltage; /*< [V]  UPS batteries voltage. */
  float capacity; /*<   UPS batteries remaining capacity. */
  uint8_t power_adapter; /*<   0: Disconnected, 1: Connected, 2: Error. */
-}) mavlink_x_728_comms_t;
+} mavlink_x_728_comms_t;
 
 #define MAVLINK_MSG_ID_X_728_COMMS_LEN 17
 #define MAVLINK_MSG_ID_X_728_COMMS_MIN_LEN 17

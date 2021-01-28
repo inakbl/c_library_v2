@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_NAIA_BATT_STATUS 621
 
-MAVPACKED(
+
 typedef struct __mavlink_naia_batt_status_t {
  uint64_t error_count[3]; /*<  */
  uint32_t voltage[3]; /*< [mV] */
@@ -11,7 +11,7 @@ typedef struct __mavlink_naia_batt_status_t {
  uint32_t termistor_1[3]; /*< [deg] */
  uint32_t termistor_2[3]; /*< [deg] */
  uint8_t batt_id[3]; /*<  */
-}) mavlink_naia_batt_status_t;
+} mavlink_naia_batt_status_t;
 
 #define MAVLINK_MSG_ID_NAIA_BATT_STATUS_LEN 75
 #define MAVLINK_MSG_ID_NAIA_BATT_STATUS_MIN_LEN 75

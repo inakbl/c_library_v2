@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_PART1 616
 
-MAVPACKED(
+
 typedef struct __mavlink_naia_control_wrapper_input_csv_part1_t {
  float time; /*<   Timestamp. */
  float raw_pressure_s[6]; /*<   Array of raw (but offset corrected) pressures measured by the starboard pitot. */
@@ -17,7 +17,7 @@ typedef struct __mavlink_naia_control_wrapper_input_csv_part1_t {
  float angular_acceleration[6]; /*<   Angular acceleration measured by the IMU. */
  float imposed_aoa_sprc[4]; /*<   Geometric wing angles imposed manually, SPRC* convention. If set to NaN, control activates; othewise, input is used. */
  float rudder_angle; /*<   Rudder angle value obtained by a Magnetic encoder. */
-}) mavlink_naia_control_wrapper_input_csv_part1_t;
+} mavlink_naia_control_wrapper_input_csv_part1_t;
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_PART1_LEN 240
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_PART1_MIN_LEN 240

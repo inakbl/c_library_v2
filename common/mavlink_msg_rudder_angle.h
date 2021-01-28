@@ -3,10 +3,10 @@
 
 #define MAVLINK_MSG_ID_RUDDER_ANGLE 619
 
-MAVPACKED(
+
 typedef struct __mavlink_rudder_angle_t {
  float rudder_angle; /*< [rad]   Rudder angle (deg) */
-}) mavlink_rudder_angle_t;
+} mavlink_rudder_angle_t;
 
 #define MAVLINK_MSG_ID_RUDDER_ANGLE_LEN 4
 #define MAVLINK_MSG_ID_RUDDER_ANGLE_MIN_LEN 4

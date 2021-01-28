@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SBG_SHIP_MOTION 627
 
-MAVPACKED(
+
 typedef struct __mavlink_sbg_ship_motion_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  uint32_t time_stamp; /*< [us] Time since sensor is powered up us.*/
@@ -15,7 +15,7 @@ typedef struct __mavlink_sbg_ship_motion_t {
  uint8_t heave_vel_aided; /*<  True if heave output is compensated for transient accelerations*/
  uint8_t period_available; /*<  True if the swell period is provided in this output*/
  uint8_t period_valid; /*<  True if the period returned is assumed to be valid or not.*/
-}) mavlink_sbg_ship_motion_t;
+} mavlink_sbg_ship_motion_t;
 
 #define MAVLINK_MSG_ID_SBG_SHIP_MOTION_LEN 54
 #define MAVLINK_MSG_ID_SBG_SHIP_MOTION_MIN_LEN 54

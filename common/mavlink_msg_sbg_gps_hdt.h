@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SBG_GPS_HDT 637
 
-MAVPACKED(
+
 typedef struct __mavlink_sbg_gps_hdt_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  uint32_t time_stamp; /*< [us] Time since sensor is powered up us.*/
@@ -13,7 +13,7 @@ typedef struct __mavlink_sbg_gps_hdt_t {
  float pitch; /*<  Pitch angle from the master to the rover.*/
  float pitch_acc; /*<  1 sigma pitch estimated accuracy.*/
  uint16_t status; /*< [us] GPS True Heading status. 0 SOL_COMPUTED, 1 INSUFFICIENT_OBS, 2 INTERNAL_ERROR, 3 HEIGHT_LIMIT.*/
-}) mavlink_sbg_gps_hdt_t;
+} mavlink_sbg_gps_hdt_t;
 
 #define MAVLINK_MSG_ID_SBG_GPS_HDT_LEN 34
 #define MAVLINK_MSG_ID_SBG_GPS_HDT_MIN_LEN 34

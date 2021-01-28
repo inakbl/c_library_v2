@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SBG_DATA 607
 
-MAVPACKED(
+
 typedef struct __mavlink_sbg_data_t {
  float acc_z; /*< [m/s/s]  Vertical acceleration from ship motion profile (positive down) */
  float vel_z; /*< [m/s]  Vertical velocity from ship motion profile (positive down)  */
@@ -26,7 +26,7 @@ typedef struct __mavlink_sbg_data_t {
  uint8_t imu_com; /*<       (BOOL) True if the communication with the IMU is ok. */
  uint8_t imu_status; /*<    (BOOL) True if internal IMU passes Built In Test (Calibration, CPU) */
  uint8_t heave_valid; /*<    (BOOL) True after heave convergence time. */
-}) mavlink_sbg_data_t;
+} mavlink_sbg_data_t;
 
 #define MAVLINK_MSG_ID_SBG_DATA_LEN 57
 #define MAVLINK_MSG_ID_SBG_DATA_MIN_LEN 57

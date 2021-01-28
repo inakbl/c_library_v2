@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SBG_EKF_NAV 632
 
-MAVPACKED(
+
 typedef struct __mavlink_sbg_ekf_nav_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  uint32_t time_stamp; /*< [us] Time since sensor is powered up us.*/
@@ -28,7 +28,7 @@ typedef struct __mavlink_sbg_ekf_nav_t {
  uint8_t gps2_course_used; /*<  True if GPS2 Course is used in solution (data used and valid since 3s).*/
  uint8_t gps2_hdt_used; /*<  True if GPS2 True Heading is used in solution (data used and valid since 3s).*/
  uint8_t odo_used; /*<  True if Odometer is used in solution (data used and valid since 3s).*/
-}) mavlink_sbg_ekf_nav_t;
+} mavlink_sbg_ekf_nav_t;
 
 #define MAVLINK_MSG_ID_SBG_EKF_NAV_LEN 80
 #define MAVLINK_MSG_ID_SBG_EKF_NAV_MIN_LEN 80

@@ -3,10 +3,10 @@
 
 #define MAVLINK_MSG_ID_CONTROL_FEEDBACK 603
 
-MAVPACKED(
+
 typedef struct __mavlink_control_feedback_t {
  float act_angle; /*< [deg]  actual angle read */
-}) mavlink_control_feedback_t;
+} mavlink_control_feedback_t;
 
 #define MAVLINK_MSG_ID_CONTROL_FEEDBACK_LEN 4
 #define MAVLINK_MSG_ID_CONTROL_FEEDBACK_MIN_LEN 4

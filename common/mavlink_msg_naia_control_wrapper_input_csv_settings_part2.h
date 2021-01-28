@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_SETTINGS_PART2 624
 
-MAVPACKED(
+
 typedef struct __mavlink_naia_control_wrapper_input_csv_settings_part2_t {
  float initial_aoa_sprc[4]; /*< [deg]  Forces the control to impose a desired initial angle in each control surface. */
  float derivative_time_constant; /*< [s]  Lowpass filtering factor used to estimate numerical derivatives. */
@@ -21,7 +21,7 @@ typedef struct __mavlink_naia_control_wrapper_input_csv_settings_part2_t {
  float pitot_speed_std_p; /*< [m/s]  A priori estimation of the standard deviation of the speed measured by the port pitot. */
  float pitot_speed_std_r; /*< [m/s]  A priori estimation of the standard deviation of the speed measured by the rear pitot. */
  float reset; /*<   Reset the control  when this value is changed. */
-}) mavlink_naia_control_wrapper_input_csv_settings_part2_t;
+} mavlink_naia_control_wrapper_input_csv_settings_part2_t;
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_SETTINGS_PART2_LEN 88
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_SETTINGS_PART2_MIN_LEN 88

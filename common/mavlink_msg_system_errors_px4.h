@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SYSTEM_ERRORS_PX4 614
 
-MAVPACKED(
+
 typedef struct __mavlink_system_errors_px4_t {
  uint8_t usound_com_err; /*<   Serial port not connected or unable to establish connection */
  uint8_t usound_com_timeout; /*<   Communication with serial port is lost during execution */
@@ -21,7 +21,7 @@ typedef struct __mavlink_system_errors_px4_t {
  uint8_t maxon_homing_err[5]; /*<   Homming cannot be attained */
  uint8_t maxon_out_of_range[5]; /*<   Read a position out of specific range > 5 times */
  uint8_t general_err[5]; /*<   Other EPOS4 error not covered in the other messages */
-}) mavlink_system_errors_px4_t;
+} mavlink_system_errors_px4_t;
 
 #define MAVLINK_MSG_ID_SYSTEM_ERRORS_PX4_LEN 34
 #define MAVLINK_MSG_ID_SYSTEM_ERRORS_PX4_MIN_LEN 34

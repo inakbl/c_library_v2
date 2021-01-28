@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_STATE_PART_2 613
 
-MAVPACKED(
+
 typedef struct __mavlink_naia_control_state_part_2_t {
  uint64_t index; /*<   Message index. */
  float position[6]; /*<   Copy of the input position. */
@@ -12,7 +12,7 @@ typedef struct __mavlink_naia_control_state_part_2_t {
  float angular_position[6]; /*<   Copy of the input angular_position. */
  float angular_velocity[6]; /*<   Copy of the input angular_velocity. */
  float angular_acceleration[6]; /*<   Copy of the input angular_acceleration. */
-}) mavlink_naia_control_state_part_2_t;
+} mavlink_naia_control_state_part_2_t;
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_STATE_PART_2_LEN 152
 #define MAVLINK_MSG_ID_NAIA_CONTROL_STATE_PART_2_MIN_LEN 152

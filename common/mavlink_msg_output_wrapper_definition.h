@@ -3,10 +3,10 @@
 
 #define MAVLINK_MSG_ID_OUTPUT_WRAPPER_DEFINITION 601
 
-MAVPACKED(
+
 typedef struct __mavlink_output_wrapper_definition_t {
  double alfaActua; /*< [deg]  Angle to be set to the wing */
-}) mavlink_output_wrapper_definition_t;
+} mavlink_output_wrapper_definition_t;
 
 #define MAVLINK_MSG_ID_OUTPUT_WRAPPER_DEFINITION_LEN 8
 #define MAVLINK_MSG_ID_OUTPUT_WRAPPER_DEFINITION_MIN_LEN 8

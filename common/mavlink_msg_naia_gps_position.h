@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_NAIA_GPS_POSITION 620
 
-MAVPACKED(
+
 typedef struct __mavlink_naia_gps_position_t {
  uint64_t time_utc_usec; /*< [us] Timestamp (microseconds, UTC), this is the timestamp which comes from the gps module. It might be unavailable right after cold start, indicated by a value of 0*/
  int32_t lat; /*<  Latitude in 1E-7 degrees*/
@@ -29,7 +29,7 @@ typedef struct __mavlink_naia_gps_position_t {
  uint8_t fix_type; /*<  0-1: no fix, 2: 2D fix, 3: 3D fix, 4: RTCM code differential, 5: Real-Time Kinematic, float, 6: Real-Time Kinematic, fixed, 8: Extrapolated. Some applications will not use the value of this field unless it is at least two, so always correctly fill in the fix.*/
  uint8_t vel_ned_valid; /*<  True if NED velocity is valid*/
  uint8_t satellites_used; /*<  Number of satellites used*/
-}) mavlink_naia_gps_position_t;
+} mavlink_naia_gps_position_t;
 
 #define MAVLINK_MSG_ID_NAIA_GPS_POSITION_LEN 91
 #define MAVLINK_MSG_ID_NAIA_GPS_POSITION_MIN_LEN 91

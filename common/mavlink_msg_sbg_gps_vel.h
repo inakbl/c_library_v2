@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SBG_GPS_VEL 636
 
-MAVPACKED(
+
 typedef struct __mavlink_sbg_gps_vel_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  uint32_t time_stamp; /*< [us] Time since sensor is powered up us.*/
@@ -14,7 +14,7 @@ typedef struct __mavlink_sbg_gps_vel_t {
  float course_acc; /*<  1 sgima course accuracy (0 to 360 deg).*/
  uint8_t vel_status; /*<  The raw GPS velocity status. 0 SOL_COMPUTED, 1 INSUFFICIENT_OBS, 2 INTERNAL_ERROR, 3 LIMIT.*/
  uint8_t vel_type; /*<  The raw GPS velocity type. 0 VEL_NO_SOLUTION, 1 VEL_UNKNOWN_TYPE, 2 VEL_DOPPLER, 3 VEL_DIFFERENTIAL.*/
-}) mavlink_sbg_gps_vel_t;
+} mavlink_sbg_gps_vel_t;
 
 #define MAVLINK_MSG_ID_SBG_GPS_VEL_LEN 50
 #define MAVLINK_MSG_ID_SBG_GPS_VEL_MIN_LEN 50

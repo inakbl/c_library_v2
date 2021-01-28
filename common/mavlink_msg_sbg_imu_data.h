@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SBG_IMU_DATA 630
 
-MAVPACKED(
+
 typedef struct __mavlink_sbg_imu_data_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  uint32_t time_stamp; /*< [us] Time since sensor is powered up us.*/
@@ -22,7 +22,7 @@ typedef struct __mavlink_sbg_imu_data_t {
  uint8_t imu_gyro_z; /*<  True if gyroscope Z passes Built In Test.*/
  uint8_t imu_accels_in_range; /*<  True if accelerometers are within operating range.*/
  uint8_t imu_gyros_in_range; /*<  True if gyroscopes are within operating range.*/
-}) mavlink_sbg_imu_data_t;
+} mavlink_sbg_imu_data_t;
 
 #define MAVLINK_MSG_ID_SBG_IMU_DATA_LEN 74
 #define MAVLINK_MSG_ID_SBG_IMU_DATA_MIN_LEN 74

@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SBG_GPS_POS 635
 
-MAVPACKED(
+
 typedef struct __mavlink_sbg_gps_pos_t {
  uint64_t timestamp; /*< [us] Timestamp.*/
  uint32_t time_stamp; /*< [us] Time since sensor is powered up us.*/
@@ -21,7 +21,7 @@ typedef struct __mavlink_sbg_gps_pos_t {
  uint8_t glo_l1_used; /*<  True if GLONASS L1 is used in the solution.*/
  uint8_t glo_l2_used; /*<  True if GLONASS L2 is used in the solution.*/
  uint8_t num_sv_used; /*<  Number of space vehicles used in GNSS solution.*/
-}) mavlink_sbg_gps_pos_t;
+} mavlink_sbg_gps_pos_t;
 
 #define MAVLINK_MSG_ID_SBG_GPS_POS_LEN 56
 #define MAVLINK_MSG_ID_SBG_GPS_POS_MIN_LEN 56

@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_PX4_ACTUATOR_PDO_FEEDBACK 611
 
-MAVPACKED(
+
 typedef struct __mavlink_px4_actuator_pdo_feedback_t {
  float rudder_pdo_feedback; /*< [deg]  rudder position reported trough PDO */
  float starboard_pdo_feedback; /*< [deg]  starboard position reported trough PDO */
@@ -16,7 +16,7 @@ typedef struct __mavlink_px4_actuator_pdo_feedback_t {
  uint32_t min_cycle_time; /*<   min_cycle_time */
  uint32_t max_cycle_time; /*<   max_cycle_time */
  float standard_deviation; /*<   standard_deviation */
-}) mavlink_px4_actuator_pdo_feedback_t;
+} mavlink_px4_actuator_pdo_feedback_t;
 
 #define MAVLINK_MSG_ID_PX4_ACTUATOR_PDO_FEEDBACK_LEN 44
 #define MAVLINK_MSG_ID_PX4_ACTUATOR_PDO_FEEDBACK_MIN_LEN 44

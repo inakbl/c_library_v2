@@ -3,10 +3,10 @@
 
 #define MAVLINK_MSG_ID_KEY_COMMAND 606
 
-MAVPACKED(
+
 typedef struct __mavlink_key_command_t {
  char command; /*<   */
-}) mavlink_key_command_t;
+} mavlink_key_command_t;
 
 #define MAVLINK_MSG_ID_KEY_COMMAND_LEN 1
 #define MAVLINK_MSG_ID_KEY_COMMAND_MIN_LEN 1

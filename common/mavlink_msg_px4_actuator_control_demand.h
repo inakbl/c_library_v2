@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_PX4_ACTUATOR_CONTROL_DEMAND 610
 
-MAVPACKED(
+
 typedef struct __mavlink_px4_actuator_control_demand_t {
  float rudder_demanded_pos; /*< [deg]  aoa output from wrapper to be set to rudder in uavcan driver */
  float starboard_demanded_pos; /*< [deg]  aoa output from wrapper to be set to starboard in uavcan driver */
@@ -16,7 +16,7 @@ typedef struct __mavlink_px4_actuator_control_demand_t {
  uint32_t min_cycle_time; /*<   min_cycle_time */
  uint32_t max_cycle_time; /*<   max_cycle_time */
  float standard_deviation; /*<   standard_deviation */
-}) mavlink_px4_actuator_control_demand_t;
+} mavlink_px4_actuator_control_demand_t;
 
 #define MAVLINK_MSG_ID_PX4_ACTUATOR_CONTROL_DEMAND_LEN 44
 #define MAVLINK_MSG_ID_PX4_ACTUATOR_CONTROL_DEMAND_MIN_LEN 44

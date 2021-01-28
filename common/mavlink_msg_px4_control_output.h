@@ -3,10 +3,10 @@
 
 #define MAVLINK_MSG_ID_PX4_CONTROL_OUTPUT 604
 
-MAVPACKED(
+
 typedef struct __mavlink_px4_control_output_t {
  float wing_angle; /*< [deg]  control output from pressure control */
-}) mavlink_px4_control_output_t;
+} mavlink_px4_control_output_t;
 
 #define MAVLINK_MSG_ID_PX4_CONTROL_OUTPUT_LEN 4
 #define MAVLINK_MSG_ID_PX4_CONTROL_OUTPUT_MIN_LEN 4

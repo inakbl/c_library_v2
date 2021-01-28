@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_STATE_PART_1 612
 
-MAVPACKED(
+
 typedef struct __mavlink_naia_control_state_part_1_t {
  uint64_t timestamp; /*< [us] Timestamp. */
  uint64_t index; /*<   Message index. */
@@ -35,7 +35,7 @@ typedef struct __mavlink_naia_control_state_part_1_t {
  float raw_pressure_p[6]; /*<   Copy of the input raw_pressure_p. */
  float raw_pressure_r[6]; /*<   Copy of the input raw_pressure_r. */
  uint8_t status; /*<   Control algorithm Informs about whether the control loop is calculating new actuator positions (1) or not (0). */
-}) mavlink_naia_control_state_part_1_t;
+} mavlink_naia_control_state_part_1_t;
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_STATE_PART_1_LEN 221
 #define MAVLINK_MSG_ID_NAIA_CONTROL_STATE_PART_1_MIN_LEN 221

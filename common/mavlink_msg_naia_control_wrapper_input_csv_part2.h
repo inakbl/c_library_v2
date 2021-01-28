@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_PART2 617
 
-MAVPACKED(
+
 typedef struct __mavlink_naia_control_wrapper_input_csv_part2_t {
  float time; /*<   Timestamp. */
  float control_kp_gain[10]; /*<   Proportional control gain vector. The vector has  m elements. */
@@ -12,7 +12,7 @@ typedef struct __mavlink_naia_control_wrapper_input_csv_part2_t {
  float control_gains_tacking[3]; /*<   Control gains set manually for tacking maneuver. The vector has 3  (P,I,D) elements. */
  float interpolation_speeds[10]; /*<   Speeds of the boat at which the control gains (control_Gains) have been adjusted. The vector has m elements. */
  float reference_height[10]; /*<   Reference height above the water surface for the control loop. The vector has m elements. */
-}) mavlink_naia_control_wrapper_input_csv_part2_t;
+} mavlink_naia_control_wrapper_input_csv_part2_t;
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_PART2_LEN 216
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_PART2_MIN_LEN 216

@@ -3,12 +3,12 @@
 
 #define MAVLINK_MSG_ID_PITOT_RAW_PRESSURES 618
 
-MAVPACKED(
+
 typedef struct __mavlink_pitot_raw_pressures_t {
  float pitot_1_pressure[6]; /*< [m/s]  Pressure rack pitot 1 */
  float pitot_2_pressure[6]; /*< [m/s]  Pressure rack pitot 2 */
  float pitot_3_pressure[6]; /*< [m/s]  Pressure rack pitot 3 */
-}) mavlink_pitot_raw_pressures_t;
+} mavlink_pitot_raw_pressures_t;
 
 #define MAVLINK_MSG_ID_PITOT_RAW_PRESSURES_LEN 72
 #define MAVLINK_MSG_ID_PITOT_RAW_PRESSURES_MIN_LEN 72

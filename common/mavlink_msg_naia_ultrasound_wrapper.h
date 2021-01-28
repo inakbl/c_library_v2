@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_NAIA_ULTRASOUND_WRAPPER 622
 
-MAVPACKED(
+
 typedef struct __mavlink_naia_ultrasound_wrapper_t {
  double ultrasound_1_measurement; /*< [m] Measurement obtained by ultrasound 1 sensor.*/
  double ultrasound_2_measurement; /*< [m] Measurement obtained by ultrasound 2 sensor.*/
@@ -11,7 +11,7 @@ typedef struct __mavlink_naia_ultrasound_wrapper_t {
  int8_t ultrasound_1_valid; /*< [m] 1: beyond upper limit, 0: OK (within limits), -1: comms error.*/
  int8_t ultrasound_2_valid; /*< [m] 1: beyond upper limit, 0: OK (within limits), -1: comms error.*/
  int8_t ultrasound_3_valid; /*< [m] 1: beyond upper limit, 0: OK (within limits), -1: comms error.*/
-}) mavlink_naia_ultrasound_wrapper_t;
+} mavlink_naia_ultrasound_wrapper_t;
 
 #define MAVLINK_MSG_ID_NAIA_ULTRASOUND_WRAPPER_LEN 27
 #define MAVLINK_MSG_ID_NAIA_ULTRASOUND_WRAPPER_MIN_LEN 27

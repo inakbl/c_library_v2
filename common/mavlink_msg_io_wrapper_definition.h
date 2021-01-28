@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_IO_WRAPPER_DEFINITION 605
 
-MAVPACKED(
+
 typedef struct __mavlink_io_wrapper_definition_t {
  float in_4; /*<   */
  float out_4; /*<   */
@@ -13,7 +13,7 @@ typedef struct __mavlink_io_wrapper_definition_t {
  uint8_t in_2; /*<   */
  uint8_t out_1; /*<   */
  uint8_t out_2; /*<   */
-}) mavlink_io_wrapper_definition_t;
+} mavlink_io_wrapper_definition_t;
 
 #define MAVLINK_MSG_ID_IO_WRAPPER_DEFINITION_LEN 16
 #define MAVLINK_MSG_ID_IO_WRAPPER_DEFINITION_MIN_LEN 16

@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_SETTINGS_PART1 623
 
-MAVPACKED(
+
 typedef struct __mavlink_naia_control_wrapper_input_csv_settings_part1_t {
  float gains_speeds[3]; /*< [kts]  Speeds of the boat at which the control gains have been adjusted. The vector has m elements. */
  float target_speeds[2]; /*< [kts]  Speeds of the boat at which the reference height have been adjusted. The vector has m elements. */
@@ -17,7 +17,7 @@ typedef struct __mavlink_naia_control_wrapper_input_csv_settings_part1_t {
  float kd_heel[3]; /*< [deg/s]  Defines the heel derivative gain vector. */
  float lateral_depth_coupling; /*< [deg/s]  Defines the degree of coupling between the lateral semiwings and depth control desired. */
  float lateral_pitch_coupling; /*< [deg/s]  Defines the degree of coupling between the lateral semiwings and heel control desired. */
-}) mavlink_naia_control_wrapper_input_csv_settings_part1_t;
+} mavlink_naia_control_wrapper_input_csv_settings_part1_t;
 
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_SETTINGS_PART1_LEN 116
 #define MAVLINK_MSG_ID_NAIA_CONTROL_WRAPPER_INPUT_CSV_SETTINGS_PART1_MIN_LEN 116
