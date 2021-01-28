@@ -3,7 +3,7 @@
 
 #define MAVLINK_MSG_ID_SET_ATTITUDE_TARGET 82
 
-
+MAVPACKED(
 typedef struct __mavlink_set_attitude_target_t {
  uint32_t time_boot_ms; /*< [ms] Timestamp (time since system boot).*/
  float q[4]; /*<  Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)*/
@@ -14,7 +14,7 @@ typedef struct __mavlink_set_attitude_target_t {
  uint8_t target_system; /*<  System ID*/
  uint8_t target_component; /*<  Component ID*/
  uint8_t type_mask; /*<  Bitmap to indicate which dimensions should be ignored by the vehicle.*/
-} mavlink_set_attitude_target_t;
+}) mavlink_set_attitude_target_t;
 
 #define MAVLINK_MSG_ID_SET_ATTITUDE_TARGET_LEN 39
 #define MAVLINK_MSG_ID_SET_ATTITUDE_TARGET_MIN_LEN 39

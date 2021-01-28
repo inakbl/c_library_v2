@@ -6816,5 +6816,575 @@
       <field type="uint8_t" name="msg_pack_size">Number of encoded messages in the pack (not the number of bytes). Allowed range is 1 - 10.</field>
       <field type="uint8_t[250]" name="messages">Concatenation of encoded OpenDroneID messages. Shall be filled with nulls in the unused portion of the field.</field>
     </message>
+    <!-- Naia messages -->
+  <message id="600" name="INPUT_WRAPPER_DEFINITION">
+     <description> Servando ultrasound PID control input </description>
+     <field type="double" name="setpoint" units="m"> Desired depth (ho) </field>
+     <field type="double" name="ultrasound_measurement" units="m"> Measurement obtained by ultrasound sensor </field>
+     <field type="double" name="usoundMeasDataRef1" units="m"> Reference value when there are no waves </field>
+     <field type="double" name="usoundMeasDataThresh" units="m"> Filtering ripple </field>
+     <field type="double" name="kp"> Proportional constant </field>
+     <field type="double" name="ki"> Integral constant </field>
+     <field type="double" name="kd"> Derivative constant </field>
+     <field type="double" name="rudderlength" units="m"> Length of overall rudder </field>
+  </message>
+  <message id="601" name="OUTPUT_WRAPPER_DEFINITION">
+     <description> Servando ultrasound PID control output </description>
+     <field type="double" name="alfaActua" units="deg"> Angle to be set to the wing </field>
+  </message>
+  <message id="602" name="PRESSURE_CONTROL_INPUT">
+     <description> Servando pressure PID control input </description>
+     <field type="float" name="measure_pressure"> Pressure read </field>
+     <field type="float" name="kp"> P term of PID control </field>
+     <field type="float" name="kd"> D term of PID control </field>
+     <field type="float" name="ki"> I term of PID control </field>
+     <field type="float" name="wind_up"> Limit of PID integration error </field>
+     <field type="uint8_t" name="control_enabled"> (BOOL) Flag to activate control </field>
+     <field type="float" name="speed" units="m/s"> Boat speed </field>
+     <field type="float" name="k_delay"> K delay </field>
+     <field type="float" name="height_set_point" units="m"> Height reference </field>
+     <field type="float" name="pressure_offset" units="Pa"> Offset in pressure </field>
+     <field type="float" name="equilibrium_angle" units="deg"> Reference angle for actuators </field>
+     <field type="float" name="angle_multiplier"> Constant for PID control results </field>
+     <field type="float" name="change_control_sign"> Constant for PID control results </field>
+     <field type="uint8_t" name="enable_torque"> (BOOL) Activate torque </field>
+     <field type="uint8_t" name="config_mode"> (BOOL) Activate config mode </field>
+  </message>
+  <message id="603" name="CONTROL_FEEDBACK">
+     <description> Servando pressure PID control actual actuator position </description>
+     <field type="float" name="act_angle" units = "deg"> actual angle read </field>
+  </message>
+  <message id="604" name="PX4_CONTROL_OUTPUT">
+     <description> Servando pressure PID control commanded actuator position </description>
+     <field type="float" name="wing_angle" units = "deg"> control output from pressure control </field>
+  </message>
+  <message id="605" name="IO_WRAPPER_DEFINITION">
+    <description> mavlink i/o definition wrapper test </description>
+      <field type="uint8_t"  name="in_1"> </field>
+      <field type="uint8_t"     name="in_2"> </field>
+      <field type="uint16_t" name="in_3"> </field>
+      <field type="float"    name="in_4"> </field>
+      <field type="uint8_t"  name="out_1"> </field>
+      <field type="uint8_t"     name="out_2"> </field>
+      <field type="uint16_t" name="out_3"> </field>
+      <field type="float"    name="out_4"> </field>
+    </message>
+    <message id="606" name="KEY_COMMAND">
+       <description> mavlink message creating test </description>
+       <field type="char" name="command"> </field>
+    </message>
+    <message id="607" name="SBG_DATA">
+       <description> SBG ellipse N IMU sensor data </description>
+       <field type="float"   name="acc_z"     units = "m/s/s"> Vertical acceleration from ship motion profile (positive down) </field>
+       <field type="float"   name="vel_z"     units = "m/s"> Vertical velocity from ship motion profile (positive down)  </field>
+       <field type="float"   name="acc_x"     units = "m/s/s"> X acceleration (filtered) </field>
+       <field type="float"   name="acc_y"     units = "m/s/s"> Y acceleration (filtered) </field>
+       <field type="float"   name="gyro_x"    units = "rad/s"> Filtered Gyroscope - X axis rad/s  </field>
+       <field type="float"   name="gyro_y"    units = "rad/s"> Filtered Gyroscope - Y axis rad/s  </field>
+       <field type="float"   name="gyro_z"    units = "rad/s"> Filtered Gyroscope - Z axis rad/s  </field>
+       <field type="float"   name="ekf_roll"  units = "rad"> Roll angle filtered with SBG EKF </field>
+       <field type="float"   name="ekf_pitch" units = "rad"> Roll angle filtered with SBG EKF </field>
+       <field type="float"   name="ekf_yaw"   units = "rad"> Roll angle filtered with SBG EKF </field>
+       <field type="float"   name="temp"      units = "cdegC"> Internal Temperature degC  </field>
+       <field type="float"   name="heave"     units = "m"> Heave (positive down) at main location (in m)  </field>
+       <field type="uint8_t" name="main_power">  (BOOL) True when main power supply is OK. </field>
+       <field type="uint8_t" name="imu_power">   (BOOL) True when IMU power supply is OK. </field>
+       <field type="uint8_t" name="gps_power">   (BOOL) Set to True when GPS power supply is OK. </field>
+       <field type="uint8_t" name="settings">    (BOOL) True if settings were correctly loaded </field>
+       <field type="uint8_t" name="temperature"> (BOOL) True when temperature is within specified limits. </field>
+       <field type="uint8_t" name="port_a">      (BOOL) PORT A: False in case of low level communication error. </field>
+       <field type="uint8_t" name="imu_com">     (BOOL) True if the communication with the IMU is ok. </field>
+       <field type="uint8_t" name="imu_status">  (BOOL) True if internal IMU passes Built In Test (Calibration, CPU) </field>
+       <field type="uint8_t" name="heave_valid">  (BOOL) True after heave convergence time. </field>
+    </message>
+    <message id="608" name="ACTUATOR_STATUS">
+       <description> Actuators state </description>
+       <field type="uint64_t" name="index"> Cycle number. </field>
+       <field type="uint64_t" name="timestamp" units="us"> Timestamp. </field>
+       <field type="int8_t[5]" name="switchedon"> Whether the actuator is enabled. Bit 0x0002 of status word. </field>
+       <field type="int8_t[5]" name="torqueon"> Whether the torque is enabled. Bit 0x1000 of status word. </field>
+       <field type="int8_t[5]" name="operative"> Whether the actuator is operative. Bit 0x0004 of status word. </field>
+       <field type="int8_t[5]" name="quickstopped"> Whether the actuator is quickstopped. Bit 0x0020 of status word. </field>
+       <field type="int8_t[5]" name="faulted"> Whether the actuator is faulted. Bit 0x0008 of status word. </field>
+       <field type="uint8_t[5]" name="target_state"> The uavcan driver state machine state. </field>
+       <field type="int8_t[5]" name="actuator_idle"> Number of consecutive cycles not communicating. </field>
+       <field type="uint16_t[5]" name="actuator_error"> Current actuator error value. </field>
+       <field type="uint8_t" name="motors_state"> Whether actuators are enabled or disabled. 0: Stopped 1: Running. </field>
+    </message>
+    <message id="609" name="ROS_ACTUATOR_OUTPUT">
+      <description> ROS AoA messages to be sent to drive Maxon actuators </description>
+      <field type="float[5]" name="angle_set_maxon" units = "deg"> aoa output to be set to Maxon </field>
+      <field type="uint8_t" name="enable_torque"> enable torque on Maxon actuators </field>
+      <field type="uint8_t" name="cyclic_sync_mode"> enable Cyclic Sync Position mode </field>
+    </message>
+    <message id="610" name="PX4_ACTUATOR_CONTROL_DEMAND">
+      <description> ROS AoA messages to be sent to drive Maxon actuators </description>
+      <field type="float" name="rudder_demanded_pos" units = "deg"> aoa output from wrapper to be set to rudder in uavcan driver </field>
+      <field type="float" name="starboard_demanded_pos" units = "deg"> aoa output from wrapper to be set to starboard in uavcan driver </field>
+      <field type="float" name="port_demanded_pos" units = "deg"> aoa output from wrapper to be set to port in uavcan driver </field>
+      <field type="float" name="central_1_demanded_pos" units = "deg"> aoa output from wrapper to be set to central 1 in uavcan driver </field>
+      <field type="float" name="central_2_demanded_pos" units = "deg"> aoa output from wrapper to be set to central 2 in uavcan driver </field>
+      <field type="uint32_t" name="elapsed"> time elapsed between calls </field>
+      <field type="uint32_t" name="no_cycles"> no_cycles </field>
+      <field type="uint32_t" name="average_time"> average_time </field>
+      <field type="uint32_t" name="min_cycle_time"> min_cycle_time </field>
+      <field type="uint32_t" name="max_cycle_time"> max_cycle_time </field>
+      <field type="float" name="standard_deviation"> standard_deviation </field>
+    </message>
+    <message id="611" name="PX4_ACTUATOR_PDO_FEEDBACK">
+      <description> PDO position feedback got in uavcan driver </description>
+      <field type="float" name="rudder_pdo_feedback" units = "deg"> rudder position reported trough PDO </field>
+      <field type="float" name="starboard_pdo_feedback" units = "deg"> starboard position reported trough PDO </field>
+      <field type="float" name="port_pdo_feedback" units = "deg"> port position reported trough PDO </field>
+      <field type="float" name="central_1_pdo_feedback" units = "deg"> central 1 position reported trough PDO </field>
+      <field type="float" name="central_2_pdo_feedback" units = "deg"> central 2 position reported trough PDO </field>
+      <field type="uint32_t" name="elapsed"> time elapsed between calls </field>
+      <field type="uint32_t" name="no_cycles"> no_cycles </field>
+      <field type="uint32_t" name="average_time"> average_time </field>
+      <field type="uint32_t" name="min_cycle_time"> min_cycle_time </field>
+      <field type="uint32_t" name="max_cycle_time"> max_cycle_time </field>
+      <field type="float" name="standard_deviation"> standard_deviation </field>
+    </message>
+    <message id="612" name="NAIA_CONTROL_STATE_PART_1">
+      <description> control's state output part 1 </description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp. </field>
+      <field type="uint64_t" name="index"> Message index. </field>
+      <field type="float" name="control_aoa_s"> Control starboard angle calculated by the control loop. It will be commanded to its actuator. </field>
+      <field type="float" name="control_aoa_p"> Control port angle calculated by the control loop. It will be commanded to its actuator. </field>
+      <field type="float" name="control_aoa_r"> Control rear angle calculated by the control loop. It will be commanded to its actuator. </field>
+      <field type="float" name="control_aoa_c"> Control central angle calculated by the control loop. It will be commanded to its actuator. </field>
+      <field type="uint8_t" name="status"> Control algorithm Informs about whether the control loop is calculating new actuator positions (1) or not (0). </field>
+      <field type="float" name="static_pressure_s"> Informs about the static pressure calculated at the starboard pitot. </field>
+      <field type="float" name="static_pressure_p"> Informs about the static pressure calculated at the port pitot. </field>
+      <field type="float" name="static_pressure_r"> Informs about the static pressure calculated at the rear pitot. </field>
+      <field type="float[2]" name="speed_s"> Informs about the speed calculated at the starboard pitot and its standard deviation. Vector [2 x 1]. </field>
+      <field type="float[2]" name="speed_p"> Informs about the speed calculated at the port pitot and its standard deviation. Vector [2 x 1]. </field>
+      <field type="float[2]" name="speed_r"> Informs about the speed calculated at the rear pitot and its standard deviation. Vector [2 x 1]. </field>
+      <field type="float[2]" name="speed_imu"> Informs about the speed calculated by the IMU and its standard deviation. </field>
+      <field type="float[2]" name="speed_control"> Informs about the speed calculated by the fusion of all the sensors mounted and its standard deviation. </field>
+      <field type="float[2]" name="raw_speed_control"> Informs about the raw speed calculated by the fusion of all the sensors mounted and its standard deviation. </field>
+      <field type="float" name="error_depth"> Informs about the control error depth. </field>
+      <field type="float" name="error_heel"> Informs about the control error heel. </field>
+      <field type="float" name="error_pitch"> Informs about the control error pitch. </field>  
+      <field type="float" name="local_depth"> Informs about the local depth measured by the sensors. </field>
+      <field type="float" name="local_heel"> Informs about the local heel measured by the sensors. </field>
+      <field type="float" name="local_pitch"> Informs about the local pitch measured by the sensors. </field>
+      <field type="float" name="target_depth"> Informs about the instantaneous target depth of the control. </field>
+      <field type="float" name="target_pitch"> Informs about the instantaneous target height of the center of mass of the boat. </field>
+      <field type="float[2]" name="aoa_depth"> Informs about the cummulative and instantaneous control signal associated with depth control. </field>
+      <field type="float[2]" name="aoa_heel"> Informs about the cummulative and instantaneous control signal associated with heel control. </field>
+      <field type="float[2]" name="aoa_pitch"> Informs about the cummulative and instantaneous control signal associated with pitch control. </field>
+      <field type="float[6]" name="raw_pressure_s"> Copy of the input raw_pressure_s. </field>
+      <field type="float[6]" name="raw_pressure_p"> Copy of the input raw_pressure_p. </field>
+      <field type="float[6]" name="raw_pressure_r"> Copy of the input raw_pressure_r. </field>
+    </message>
+    <message id="613" name="NAIA_CONTROL_STATE_PART_2">
+      <description> control's state output part 2 </description>
+      <field type="uint64_t" name="index"> Message index. </field>
+      <field type="float[6]" name="position"> Copy of the input position. </field>
+      <field type="float[6]" name="velocity"> Copy of the input velocity. </field>
+      <field type="float[6]" name="acceleration"> Copy of the input acceleration. </field>
+      <field type="float[6]" name="angular_position"> Copy of the input angular_position. </field>
+      <field type="float[6]" name="angular_velocity"> Copy of the input angular_velocity. </field>
+      <field type="float[6]" name="angular_acceleration"> Copy of the input angular_acceleration. </field>
+      <!--field type="uint8_t" name="paused"> Whether the wrapper has the control paused or not. </field-->
+    </message>
+    <message id="614" name="SYSTEM_ERRORS_PX4">
+    <description> Px4 control system error struct </description>
+      <field type="uint8_t" name="usound_com_err"> Serial port not connected or unable to establish connection </field>
+      <field type="uint8_t" name="usound_com_timeout"> Communication with serial port is lost during execution </field>
+      <field type="uint8_t[3]" name="usound_wrong_val"> Received or calculated value is out of bounds </field>
+      <field type="uint8_t" name="press_com_err"> Serial port not connected or unable to establish connection </field>
+      <field type="uint8_t" name="press_com_timeout"> Communication with serial port is lost during execution </field>
+      <field type="uint8_t[3]" name="press_wrong_val"> Received or calculated value is out of bounds </field>
+      <field type="uint8_t" name="nke_com_err"> Serial port not connected or unable to establish connection </field>
+      <field type="uint8_t" name="nke_com_timeout"> Communication with serial port is lost during execution </field>
+      <field type="uint8_t[3]" name="nke_wrong_val"> Received or calculated value is out of bounds </field>
+      <field type="uint8_t" name="can_open_timeout"> CAN on STM32 cannot be opened </field>
+      <field type="uint8_t" name="can_close_timeout"> CAN On STM32 cannot be closed </field>
+      <field type="uint8_t" name="can_bus_timeout"> Received >= 100 CAN Error Frames</field>
+      <field type="uint8_t" name="can_error_frame"> Enable torque on Maxon actuators </field>
+      <field type="uint8_t[5]" name="maxon_homing_err"> Homming cannot be attained </field>
+      <field type="uint8_t[5]" name="maxon_out_of_range"> Read a position out of specific range > 5 times </field>
+      <field type="uint8_t[5]" name="general_err"> Other EPOS4 error not covered in the other messages </field>
+    </message>
+    <message id="615" name="PITOT_SENSORS">
+      <description> Pitot sensors structs </description>
+      <field type="float" name="pt_rudder" units = "Pa"> Total pressure of pitot 1 </field>
+      <field type="float" name="ps_rudder" units = "Pa"> Static pressure of pitot 1 </field>
+      <field type="float[3]" name="vel_rudder" units = "m/s"> 3D array fluid velocity of pitot 1 </field>
+      <field type="float" name="atm_rudder" units = "Pa"> Atmospheric pressure of pitot 1 </field>
+      <field type="float" name="pt_starboard" units = "Pa"> Total pressure of pitot 2 </field>
+      <field type="float" name="ps_starboard" units = "Pa"> Static pressure of pitot 2 </field>
+      <field type="float[3]" name="vel_starboard" units = "m/s"> 3D array fluid velocity of pitot 2 </field>
+      <field type="float" name="atm_starboard" units = "Pa"> Atmospheric pressure of pitot 2 </field>
+      <field type="float" name="pt_port" units = "Pa"> Total pressure of pitot 3 </field>
+      <field type="float" name="ps_port" units = "Pa"> Static pressure of pitot 3 </field>
+      <field type="float[3]" name="vel_port" units = "m/s"> 3D array fluid velocity of pitot 3 </field>
+      <field type="float" name="atm_port" units = "Pa"> Atmospheric pressure of pitot 3 </field>
+      <field type="float" name="pressure_atm" units = "Pa"> Atmospheric pressure (average between the three pitot values) </field>
+    </message>
+    <message id="616" name="NAIA_CONTROL_WRAPPER_INPUT_CSV_PART1">
+       <description> Input signals to control wrapper from CSV. Part one (mavlink messages are limited to 256 bytes) </description>
+       <field type="float" name="time"> Timestamp. </field>
+       <field type="float[6]" name="raw_pressure_s"> Array of raw (but offset corrected) pressures measured by the starboard pitot. </field>
+       <field type="float[6]" name="raw_pressure_p"> Array of raw (but offset corrected) pressures measured by the port pitot. </field>
+       <field type="float[6]" name="raw_pressure_r"> Array of raw (but offset corrected) pressures measured by the rear pitot. </field>
+       <field type="float[6]" name="position"> Global coordinates defining the position of the boat. The vector has the form: [Latitude, longitude, heigth]. </field>
+       <field type="float[6]" name="velocity"> Velocity measured by the IMU in combination with the GPS when signal is available. </field>
+       <field type="float[6]" name="acceleration"> Acceleration measured by the  Inertial Measurement Unit (IMU). </field>
+       <field type="float[6]" name="angular_position"> Rotational speed, measured by the IMU. </field>
+       <field type="float[6]" name="angular_velocity"> Euler angles measured by the IMU. </field>
+       <field type="float[6]" name="angular_acceleration"> Angular acceleration measured by the IMU. </field>
+       <field type="float[4]" name="imposed_aoa_sprc"> Geometric wing angles imposed manually, SPRC* convention. If set to NaN, control activates; othewise, input is used. </field>
+       <field type="float" name="rudder_angle"> Rudder angle value obtained by a Magnetic encoder. </field>
+    </message>
+    <message id="617" name="NAIA_CONTROL_WRAPPER_INPUT_CSV_PART2">
+       <description> Input signals to control wrapper from CSV. Part two </description>
+       <field type="float" name="time"> Timestamp. </field>
+       <field type="float[10]" name="control_kp_gain"> Proportional control gain vector. The vector has  m elements. </field>
+       <field type="float[10]" name="control_ki_gain"> Integral control gain vector. The vector has  m elements. </field>
+       <field type="float[10]" name="control_kd_gain"> Derivative control gain vector. The vector has  m elements. </field>
+       <field type="float[3]" name="control_gains_tacking"> Control gains set manually for tacking maneuver. The vector has 3  (P,I,D) elements. </field>
+       <field type="float[10]" name="interpolation_speeds"> Speeds of the boat at which the control gains (control_Gains) have been adjusted. The vector has m elements. </field>
+       <field type="float[10]" name="reference_height"> Reference height above the water surface for the control loop. The vector has m elements. </field>
+    </message>
+    <message id="618" name="PITOT_RAW_PRESSURES">
+      <description> Pitot sensors structs </description>
+      <field type="float[6]" name="pitot_1_pressure" units = "m/s"> Pressure rack pitot 1 </field>
+      <field type="float[6]" name="pitot_2_pressure" units = "m/s"> Pressure rack pitot 2 </field>
+      <field type="float[6]" name="pitot_3_pressure" units = "m/s"> Pressure rack pitot 3 </field>
+    </message>
+    <message id="619" name="RUDDER_ANGLE">
+      <description> Rudder angle </description>
+      <field type="float" name="rudder_angle" units = "rad">  Rudder angle (deg) </field>
+    </message>
+    <message id="620" name="NAIA_GPS_POSITION">
+      <description>NAIA gps position</description>
+      <field type="int32_t" name="lat">Latitude in 1E-7 degrees</field>
+      <field type="int32_t" name="lon">Longitude in 1E-7 degrees</field>
+      <field type="int32_t" name="alt" units="mm">Altitude in 1E-3 meters above MSL, (millimetres)</field>
+      <field type="int32_t" name="alt_ellipsoid" units="mm">Altitude in 1E-3 meters bove Ellipsoid, (millimetres)</field>
+      <field type="float" name="s_variance_m_s" units="m/s">GPS speed accuracy estimate, (metres/sec)</field>
+      <field type="float" name="c_variance_rad" units="rad">GPS course accuracy estimate, (radians)</field>
+      <field type="uint8_t" name="fix_type">0-1: no fix, 2: 2D fix, 3: 3D fix, 4: RTCM code differential, 5: Real-Time Kinematic, float, 6: Real-Time Kinematic, fixed, 8: Extrapolated. Some applications will not use the value of this field unless it is at least two, so always correctly fill in the fix.</field>
+      <field type="float" name="eph" units="m">GPS horizontal position accuracy (metres)</field>
+      <field type="float" name="epv" units="m">GPS vertical position accuracy (metres)</field>
+      <field type="float" name="hdop">Horizontal dilution of precision</field>
+      <field type="float" name="vdop">Vertical dilution of precision</field>
+      <field type="int32_t" name="noise_per_ms">GPS noise per millisecond</field>
+      <field type="int32_t" name="jamming_indicator">indicates jamming is occurring</field>
+      <field type="float" name="vel_m_s" units="m/s">GPS ground speed, (metres/sec)</field>
+      <field type="float" name="vel_n_m_s" units="m/s">GPS North velocity, (metres/sec)</field>
+      <field type="float" name="vel_e_m_s" units="m/s">GPS East velocity, (metres/sec)</field>
+      <field type="float" name="vel_d_m_s" units="m/s">GPS Down velocity, (metres/sec)</field>
+      <field type="float" name="cog_rad" units="rad">Course over ground (NOT heading, but direction of movement), -PI..PI, (radians)</field>
+      <field type="uint8_t" name="vel_ned_valid">True if NED velocity is valid</field>
+      <field type="int32_t" name="timestamp_time_relative" units="us">timestamp + timestamp_time_relative = Time of the UTC timestamp since system start, (microseconds)</field>
+      <field type="uint64_t" name="time_utc_usec" units="us">Timestamp (microseconds, UTC), this is the timestamp which comes from the gps module. It might be unavailable right after cold start, indicated by a value of 0</field>
+      <field type="uint8_t" name="satellites_used">Number of satellites used</field>
+      <field type="float" name="heading" units="rad">heading angle of XYZ body frame rel to NED. Set to NaN if not available and updated (used for dual antenna GPS), (rad, [-PI, PI])</field>
+      <field type="float" name="heading_offset" units="rad">heading offset of dual antenna array in body frame. Set to NaN if not applicable. (rad, [-PI, PI])</field>
+    </message>
+    <message id="621" name="NAIA_BATT_STATUS">
+      <description>Battery status as reported by the BMS</description>
+      <field type="uint8_t[3]" name="batt_id"></field>
+      <field type="uint64_t[3]" name="error_count"></field>
+      <field type="uint32_t[3]" name="voltage" units="mV"></field>
+      <field type="uint32_t[3]" name="current"></field>
+      <field type="uint32_t[3]" name="termistor_1" units="deg"></field>
+      <field type="uint32_t[3]" name="termistor_2" units="deg"></field>
+    </message>
+    <message id="622" name="NAIA_ULTRASOUND_WRAPPER">
+      <description> Ultrasound control input </description>
+      <field type="double" name="ultrasound_1_measurement" units="m">Measurement obtained by ultrasound 1 sensor.</field>
+      <field type="double" name="ultrasound_2_measurement" units="m">Measurement obtained by ultrasound 2 sensor.</field>
+      <field type="double" name="ultrasound_3_measurement" units="m">Measurement obtained by ultrasound 3 sensor.</field>
+      <field type="int8_t" name="ultrasound_1_valid" units="m">1: beyond upper limit, 0: OK (within limits), -1: comms error.</field>
+      <field type="int8_t" name="ultrasound_2_valid" units="m">1: beyond upper limit, 0: OK (within limits), -1: comms error.</field>
+      <field type="int8_t" name="ultrasound_3_valid" units="m">1: beyond upper limit, 0: OK (within limits), -1: comms error.</field>
+    </message>
+    <message id="623" name="NAIA_CONTROL_WRAPPER_INPUT_CSV_SETTINGS_PART1">
+       <description> Input signals to control wrapper from CSV. Settings part 1 </description>
+       <field type="float[3]" name="gains_speeds" units="kts"> Speeds of the boat at which the control gains have been adjusted. The vector has m elements. </field>
+       <field type="float[2]" name="target_speeds" units="kts"> Speeds of the boat at which the reference height have been adjusted. The vector has m elements. </field>
+       <field type="float[2]" name="target_height" units="mm"> Vector that defines the target height at each measured speed. </field>
+       <field type="float[2]" name="target_pitch" units="deg"> Vector that defines the target pitch at each measured speed. </field>
+       <field type="float[3]" name="kp_depth" units="deg/s"> Defines the depth proportional gain vector. </field>
+       <field type="float[3]" name="kd_depth" units="deg/s"> Defines the depth derivative gain vector. </field>
+       <field type="float[3]" name="kp_pitch" units="deg/s"> Defines the pitch proportional gain vector. </field>
+       <field type="float[3]" name="kd_pitch" units="deg/s"> Defines the pitch derivative gain vector. </field>
+       <field type="float[3]" name="kp_heel" units="deg/s"> Defines the heel proportional gain vector. </field>
+       <field type="float[3]" name="kd_heel" units="deg/s"> Defines the heel derivative gain vector. </field>
+       <field type="float" name="lateral_depth_coupling" units="deg/s"> Defines the degree of coupling between the lateral semiwings and depth control desired. </field>
+       <field type="float" name="lateral_pitch_coupling" units="deg/s"> Defines the degree of coupling between the lateral semiwings and heel control desired. </field>
+    </message>
+    <message id="624" name="NAIA_CONTROL_WRAPPER_INPUT_CSV_SETTINGS_PART2">
+       <description> Input signals to control wrapper from CSV. Settings part 2</description>
+       <field type="float[4]" name="initial_aoa_sprc" units="deg"> Forces the control to impose a desired initial angle in each control surface. </field>
+       <field type="float" name="derivative_time_constant" units="s"> Lowpass filtering factor used to estimate numerical derivatives. </field>
+       <field type="float" name="filter_speed"> Modulates the filtering level of the control speed signal. </field>
+       <field type="float" name="takeoff_hysteresis_speed" units="kts"> Determines the speed gap of the hystereis loop. </field>
+       <field type="float" name="heel_threshold" units="mm"> Pressure threshold that smoothly triggers the heel active control. </field>
+       <field type="float[2]" name="pitch_threshold" units="mm"> Pressure threshold that smoothly triggers the pitch active control. </field>
+       <field type="float" name="heel_hardness" units="Pa-1"> Constant that control the "stiffness" of the heel active control. </field>
+       <field type="float" name="pitch_hardness" units="Pa-1"> Constant that control the "stiffness" of the pitch active control. </field>
+       <field type="float[2]" name="deflection_range" units="deg"> Vector that defines the minimum and maximum ranges of the actuator position. </field>
+       <field type="float[2]" name="deflection_speed_range" units="deg/s"> Vector that defines the minimum and maximum ranges of the actuator speed. </field>
+       <field type="float" name="emergency_splashdown_sample_multiplier"> Defines the multiplier between samples of the commanded position during an emergency splashdown. </field>
+       <field type="float" name="emergency_splashdown_final_angle" units="deg"> Defines the target angle commanded to the actuators during an emergency splashdown. </field>
+       <field type="float" name="pitot_speed_std_s" units="m/s"> A priori estimation of the standard deviation of the speed measured by the starboard pitot. </field>
+       <field type="float" name="pitot_speed_std_p" units="m/s"> A priori estimation of the standard deviation of the speed measured by the port pitot. </field>
+       <field type="float" name="pitot_speed_std_r" units="m/s"> A priori estimation of the standard deviation of the speed measured by the rear pitot. </field>
+       <field type="float" name="reset"> Reset the control  when this value is changed. </field> 
+    </message>
+    <message id="625" name="MAXON_POWER_STATE">
+       <description> Maxon motors voltage and current </description>
+       <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+       <field type="int32_t[5]" name="current" units="mA"> Current as reported by Epos devices. </field>
+       <field type="float[5]" name="voltage" units="mV"> Voltage as reported by Epos devices. </field>
+       <field type="float[5]" name="temperature" units="deg"> Temperature as reported by Epos devices. </field>
+    </message>
+    <message id="626" name="X_728_COMMS">
+       <description> Raspberry Pi UPS status </description>
+       <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+       <field type="float" name="voltage" units="V"> UPS batteries voltage. </field>
+       <field type="float" name="capacity"> UPS batteries remaining capacity. </field>
+       <field type="uint8_t" name="power_adapter"> 0: Disconnected, 1: Connected, 2: Error. </field>
+    </message>
+    <message id="627" name="SBG_SHIP_MOTION">
+      <description>Ship motion as reported by the SBG</description>      
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="uint16_t" name="heave_period" units="s">Main heave period in seconds. s float 4 4.</field>
+      <field type="float[3]" name="ship_motion" units="m">[Surge, Sway, Heave (positive down)] at main location (in m). Surge and Sway are not fulfilled.</field>
+      <field type="float[3]" name="acceleration" units="m/s2">[Longitudinal, Lateral, Vertical (positive down)] acceleration (in m/s2).</field>
+      <field type="float[3]" name="velocity" units="m/s">[Longitudinal, Lateral, Vertical (positive down)] velocity (in m/s).</field>
+      <field type="uint8_t" name="heave_valid">True after heave convergence time. False in following conditions: - Turn occurred and no velocity aiding is available - Heave reached higher/lower limits - If a step is detected and filter has to re-converge - If internal failure.</field>
+      <field type="uint8_t" name="heave_vel_aided">True if heave output is compensated for transient accelerations</field>
+      <field type="uint8_t" name="period_available">True if the swell period is provided in this output</field>
+      <field type="uint8_t" name="period_valid">True if the period returned is assumed to be valid or not.</field>
+    </message>
+    <message id="628" name="SBG_STATUS">
+      <description>SBG status as reported by the SBG</description>   
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="uint8_t" name="main_power">General main power. True when main power supply is OK.</field>
+      <field type="uint8_t" name="imu_power">General imu power. True when IMU power supply is OK.</field>
+      <field type="uint8_t" name="gps_power">General gps power. Set to True when GPS power supply is OK.</field>
+      <field type="uint8_t" name="settings">General Settings. True if settings were correctly loaded</field>
+      <field type="uint8_t" name="temperature">General Temperature. True when temperature is within specified limits.</field>
+      <field type="uint8_t" name="port_a">PORT A: False in case of low level communication error.</field>
+      <field type="uint8_t" name="port_b">PORT B: False in case of low level communication error.</field>
+      <field type="uint8_t" name="port_c">PORT C: False in case of low level communication error.</field>
+      <field type="uint8_t" name="port_d">PORT D: False in case of low level communication error.</field>
+      <field type="uint8_t" name="port_e">PORT E: False in case of low level communication error.</field>
+      <field type="uint8_t" name="port_a_rx">PORT A RX: False in case of saturation on PORT A input.</field>
+      <field type="uint8_t" name="port_a_tx">PORT A TX: False in case of saturation on PORT A output.</field>
+      <field type="uint8_t" name="port_b_rx">PORT B RX: False in case of saturation on PORT B input.</field>
+      <field type="uint8_t" name="port_b_tx">PORT B TX: False in case of saturation on PORT B output.</field>
+      <field type="uint8_t" name="port_c_rx">PORT C RX: False in case of saturation on PORT C input.</field>
+      <field type="uint8_t" name="port_c_tx">PORT C TX: False in case of saturation on PORT C output.</field>
+      <field type="uint8_t" name="port_d_rx">PORT D RX: False in case of saturation on PORT D input.</field>
+      <field type="uint8_t" name="port_d_tx">PORT D TX: False in case of saturation on PORT D output.</field>
+      <field type="uint8_t" name="port_e_rx">PORT E RX: False in case of saturation on PORT E input.</field>
+      <field type="uint8_t" name="port_e_tx">PORT E TX: False in case of saturation on PORT E output.</field>
+      <field type="uint8_t" name="can_rx">CAN RX: False in case of saturation on CAN Bus output buffer.</field>
+      <field type="uint8_t" name="can_tx">CAN TX: False in case of saturation on CAN Bus input buffer.</field>
+      <field type="uint8_t" name="can_status">CAN BUS. 0 CAN BUS OFF Bus OFF operation due to too much errors. 1 CAN BUS TX_RX_ERR Transmit or received error. 2 CAN BUS OK The CAN bus is working correctly. 3 CAN BUS ERROR A general error has occurred on the CAN bus.</field>
+      <field type="uint8_t" name="gps1_pos_recv">AIDING_GPS1_POS_RECV true when valid GPS 1 position data is received.</field>
+      <field type="uint8_t" name="gps1_vel_recv">AIDING_GPS1_VEL_RECV true when valid GPS 1 velocity data is received.</field>
+      <field type="uint8_t" name="gps1_hdt_recv">AIDING_GPS1_HDT_RECV true when valid GPS 1 true heading data is received.</field>
+      <field type="uint8_t" name="gps1_utc_recv">AIDING_GPS1_UTC_RECV true when valid GPS 1 UTC time data is received.</field>
+      <field type="uint8_t" name="mag_recv">AIDING_MAG_RECV true when valid Magnetometer data is received.</field>
+      <field type="uint8_t" name="odo_recv">AIDING_ODO_RECV true when Odometer pulse is received.</field>
+      <field type="uint8_t" name="dvl_recv">AIDING_DVL_RECV true when valid DVL data is received</field>
+    </message>
+    <message id="629" name="SBG_EKF_EULER">
+      <description>SBG EKF EULER as reported by the SBG</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="float[3]" name="angle" units="rad">[Roll, Pitch, Yaw (heading)] angle rad.</field>
+      <field type="float[3]" name="accuracy" units="rad">[Roll, Pitch, Yaw (heading)] angle accuracy (1 sigma) rad.</field>
+      <field type="uint8_t" name="solution_mode">Defines the Kalman filter computation mode (see the table 4 below). 0 UNINITIALIZED The Kalman filter is not initialized and the returned data are all invalid. 1 VERTICAL_GYRO The Kalman filter only rely on a vertical reference to compute roll and pitch angles. Heading and navigation data drift freely. 2 AHRS A heading reference is available, the Kalman filter provides full orientation but navigation data drift freely. 3 NAV_VELOCITY The Kalman filter computes orientation and velocity. Position is freely integrated from velocity estimation. 4 NAV_POSITION Nominal mode, the Kalman filter computes all parameters (attitude, velocity, position). Absolute position is provided.</field>
+      <field type="uint8_t" name="attitude_valid">True if Attitude data is reliable (Roll/Pitch error less than 0,5 deg).</field>
+      <field type="uint8_t" name="heading_valid">True if Heading data is reliable (Heading error less than 1 deg).</field>
+      <field type="uint8_t" name="velocity_valid">True if Velocity data is reliable (velocity error less than 1.5 m/s).</field>
+      <field type="uint8_t" name="position_valid">True if Position data is reliable (Position error less than 10m).</field>
+      <field type="uint8_t" name="vert_ref_used">True if vertical reference is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="mag_ref_used">True if magnetometer is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_vel_used">True if GPS velocity is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_pos_used">True if GPS Position is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_course_used">True if GPS Course is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_hdt_used">True if GPS True Heading is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_vel_used">True if GPS2 velocity is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_pos_used">True if GPS2 Position is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_course_used">True if GPS2 Course is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_hdt_used">True if GPS2 True Heading is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="odo_used">True if Odometer is used in solution (data used and valid since 3s).</field>
+    </message>
+    <message id="630" name="SBG_IMU_DATA">
+      <description>SBG IMU DATA as reported by the SBG</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="uint8_t" name="imu_com">True if the communication with the IMU is ok..</field>
+      <field type="uint8_t" name="imu_status">True if internal IMU passes Built In Test (Calibration, CPU).</field>
+      <field type="uint8_t" name="imu_accel_x">True if accelerometer X passes Built In Test.</field>
+      <field type="uint8_t" name="imu_accel_y">True if accelerometer Y passes Built In Test.</field>
+      <field type="uint8_t" name="imu_accel_z">True if accelerometer Z passes Built In Test.</field>
+      <field type="uint8_t" name="imu_gyro_x">True if gyroscope X passes Built In Test.</field>
+      <field type="uint8_t" name="imu_gyro_y">True if gyroscope Y passes Built In Test.</field>
+      <field type="uint8_t" name="imu_gyro_z">True if gyroscope Z passes Built In Test.</field>
+      <field type="uint8_t" name="imu_accels_in_range">True if accelerometers are within operating range.</field>
+      <field type="uint8_t" name="imu_gyros_in_range">True if gyroscopes are within operating range.</field>
+      <field type="float[3]" name="accel" units="m/s2">Filtered Accelerometer - X, Y, Z axis m/s2.</field>
+      <field type="float[3]" name="gyro" units="rad/s">Filtered Gyroscope - X, Y, Z axis rad/s.</field>
+      <field type="float" name="temp">Internal Temperature degC.</field>
+      <field type="float[3]" name="delta_vel" units="m/s2">Sculling output - X, Y, Z axis m/s2.</field>
+      <field type="float[3]" name="delta_angle" units="rad/s">Coning output - X, Y, Z axis rad/s.</field>
+    </message>
+    <message id="631" name="SBG_EKF_QUAT">
+      <description>SBG EKF EULER as reported by the SBG</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="float" name="x">This represents the x orientation in free space in quaternion form.</field>
+      <field type="float" name="y">This represents the y orientation in free space in quaternion form.</field>
+      <field type="float" name="z">This represents the z orientation in free space in quaternion form.</field>
+      <field type="float" name="w">This represents the w orientation in free space in quaternion form.</field>
+      <field type="float[3]" name="accuracy" units="rad">[Roll, Pitch, Yaw (heading)] angle accuracy (1 sigma) rad.</field>
+      <field type="uint8_t" name="solution_mode">Defines the Kalman filter computation mode (see the table 4 below). 0 UNINITIALIZED The Kalman filter is not initialized and the returned data are all invalid. 1 VERTICAL_GYRO The Kalman filter only rely on a vertical reference to compute roll and pitch angles. Heading and navigation data drift freely. 2 AHRS A heading reference is available, the Kalman filter provides full orientation but navigation data drift freely. 3 NAV_VELOCITY The Kalman filter computes orientation and velocity. Position is freely integrated from velocity estimation. 4 NAV_POSITION Nominal mode, the Kalman filter computes all parameters (attitude, velocity, position). Absolute position is provided.</field>
+      <field type="uint8_t" name="attitude_valid">True if Attitude data is reliable (Roll/Pitch error less than 0,5 deg).</field>
+      <field type="uint8_t" name="heading_valid">True if Heading data is reliable (Heading error less than 1 deg).</field>
+      <field type="uint8_t" name="velocity_valid">True if Velocity data is reliable (velocity error less than 1.5 m/s).</field>
+      <field type="uint8_t" name="position_valid">True if Position data is reliable (Position error less than 10m).</field>
+      <field type="uint8_t" name="vert_ref_used">True if vertical reference is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="mag_ref_used">True if magnetometer is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_vel_used">True if GPS velocity is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_pos_used">True if GPS Position is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_course_used">True if GPS Course is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_hdt_used">True if GPS True Heading is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_vel_used">True if GPS2 velocity is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_pos_used">True if GPS2 Position is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_course_used">True if GPS2 Course is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_hdt_used">True if GPS2 True Heading is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="odo_used">True if Odometer is used in solution (data used and valid since 3s).</field>
+    </message>
+    <message id="632" name="SBG_EKF_NAV">
+      <description>SBG EKF EULER as reported by the SBG</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="float[3]" name="velocity" units="m/s">Velocity (North, East, Down) direction m/s.</field>
+      <field type="float[3]" name="velocity_accuracy" units="m/s">1 sigma Velocity in (North, East, Down) direction accuracy m/s.</field>
+      <field type="float[3]" name="position" units="deg">[Latitude (deg), Longitude (deg), Altitude (above Mean Sea Level in meters)].</field>
+      <field type="float" name="undulation">Altitude difference between the geoid and the Ellipsoid (WGS-84 Altitude - MSL Altitude) (Height above Ellipsoid = altitude + undulation).</field>
+      <field type="float[3]" name="position_accuracy" units="m">Latitude, Longitude, Vertical accuracy m (1 sigma).</field>
+      <field type="uint8_t" name="solution_mode">Defines the Kalman filter computation mode (see the table 4 below). 0 UNINITIALIZED The Kalman filter is not initialized and the returned data are all invalid. 1 VERTICAL_GYRO The Kalman filter only rely on a vertical reference to compute roll and pitch angles. Heading and navigation data drift freely. 2 AHRS A heading reference is available, the Kalman filter provides full orientation but navigation data drift freely. 3 NAV_VELOCITY The Kalman filter computes orientation and velocity. Position is freely integrated from velocity estimation. 4 NAV_POSITION Nominal mode, the Kalman filter computes all parameters (attitude, velocity, position). Absolute position is provided.</field>
+      <field type="uint8_t" name="attitude_valid">True if Attitude data is reliable (Roll/Pitch error less than 0,5 deg).</field>
+      <field type="uint8_t" name="heading_valid">True if Heading data is reliable (Heading error less than 1 deg).</field>
+      <field type="uint8_t" name="velocity_valid">True if Velocity data is reliable (velocity error less than 1.5 m/s).</field>
+      <field type="uint8_t" name="position_valid">True if Position data is reliable (Position error less than 10m).</field>
+      <field type="uint8_t" name="vert_ref_used">True if vertical reference is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="mag_ref_used">True if magnetometer is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_vel_used">True if GPS velocity is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_pos_used">True if GPS Position is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_course_used">True if GPS Course is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps1_hdt_used">True if GPS True Heading is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_vel_used">True if GPS2 velocity is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_pos_used">True if GPS2 Position is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_course_used">True if GPS2 Course is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="gps2_hdt_used">True if GPS2 True Heading is used in solution (data used and valid since 3s).</field>
+      <field type="uint8_t" name="odo_used">True if Odometer is used in solution (data used and valid since 3s).</field>
+    </message>
+    <message id="633" name="SBG_UTC_TIME">
+      <description>SBG EKF EULER as reported by the SBG</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="uint8_t" name="clock_stable">True when a clock input can be used to synchronize the internal clock.</field>
+      <field type="uint8_t" name="clock_status">Define the internal clock estimation status. 0 error, 1 internal crystal, 2 PPS detected and the clock is converging to it, 3 Clock has converged to the PPS and is within 500ns.</field>
+      <field type="uint8_t" name="clock_utc_sync">True if UTC time is synchronized with a PPS.</field>
+      <field type="uint8_t" name="clock_utc_status">UTC validity status. 0 The UTC time is not known, 1 received valid UTC but we don't have the leap seconds information, 2 received valid UTC time data with valid leap seconds</field>
+      <field type="uint16_t" name="year">Year.</field>
+      <field type="uint8_t" name="month">Month in Year [1 ... 12].</field>
+      <field type="uint8_t" name="day">Day in Month [1 ... 31].</field>
+      <field type="uint8_t" name="hour">Hour in day [0 ... 23].</field>
+      <field type="uint8_t" name="min">Minute in hour [0 ... 59].</field>
+      <field type="uint8_t" name="sec">Second in minute [0 ... 60], Note 60 is when a leap second is added.</field>
+      <field type="uint32_t" name="nanosec">Nanosecond of second.</field>
+      <field type="uint32_t" name="gps_tow" units="ms">GPS Time of Week ms.</field>
+    </message>
+    <message id="634" name="SBG_MAG">
+      <description>SBG EKF EULER as reported by the SBG</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="float[3]" name="mag">Magnetometer output (X, Y, Z).</field>
+      <field type="float[3]" name="accel" units="m/s2">Accelerometer output (X, Y, Z) in m/s2.</field>
+      <field type="uint8_t" name="mag_x">True if the magnetometer X has passed the self test.</field>
+      <field type="uint8_t" name="mag_y">True if the magnetometer Y has passed the self test.</field>
+      <field type="uint8_t" name="mag_z">True if the magnetometer Z has passed the self test.</field>
+      <field type="uint8_t" name="accel_x">True if the accelerometer X has passed the self test.</field>
+      <field type="uint8_t" name="accel_y">True if the accelerometer Y has passed the self test.</field>
+      <field type="uint8_t" name="accel_z">True if the accelerometer Z has passed the self test.</field>
+      <field type="uint8_t" name="mags_in_range">True if magnetometer is not saturated</field>
+      <field type="uint8_t" name="accels_in_range">True if accelerometer is not saturated</field>
+      <field type="uint8_t" name="calibration">True if magnetometer seems to be calibrated</field>
+    </message>  
+    <message id="635" name="SBG_GPS_POS">
+      <description>SBG EKF EULER as reported by the SBG</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="uint8_t" name="status">The raw GPS position status. 0 SOL_COMPUTED, 1 INSUFFICIENT_OBS, 2 INTERNAL_ERROR, 3 HEIGHT_LIMIT.</field>
+      <field type="uint8_t" name="type">The raw GPS position type. 0 NO_SOLUTION, 1 UNKNOWN_TYPE, 2 SINGLE, 3 PSRDIFF, 4 SBAS, 5 OMNISTAR, 6 RTK_FLOAT, 7 RTK_INT, 8 PPP_FLOAT, 9 PPP_INT, 10 FIXED.</field>
+      <field type="uint8_t" name="gps_l1_used">True if GPS L1 is used in the solution.</field>
+      <field type="uint8_t" name="gps_l2_used">True if GPS L2 is used in the solution.</field>
+      <field type="uint8_t" name="gps_l5_used">True if GPS L5 is used in the solution.</field>
+      <field type="uint8_t" name="glo_l1_used">True if GLONASS L1 is used in the solution.</field>
+      <field type="uint8_t" name="glo_l2_used">True if GLONASS L2 is used in the solution.</field>
+      <field type="uint32_t" name="gps_tow" units="ms">GPS Time of Week ms.</field>
+      <field type="float[3]" name="position" units="deg">[Latitude (positive North deg), Longitude (positive East deg), Altitude (Above Mean Sea Level m)].</field>
+      <field type="float" name="undulation">Altitude difference between the geoid and the Ellipsoid (WGS-84 Altitude - MSL Altitude) (Height above Ellipsoid = altitude + undulation).</field>
+      <field type="float[3]" name="position_accuracy" units="m">Latitude, Longitude, Vertical accuracy m (1 sigma).</field>
+      <field type="uint8_t" name="num_sv_used">Number of space vehicles used in GNSS solution.</field>
+      <field type="uint16_t" name="base_station_id">ID of the DGPS/RTK base station in use.</field>
+      <field type="uint16_t" name="diff_age">Differential data age 0.01 s.</field>
+    </message>    
+    <message id="636" name="SBG_GPS_VEL">
+      <description>SBG EKF EULER as reported by the SBG</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="uint8_t" name="vel_status">The raw GPS velocity status. 0 SOL_COMPUTED, 1 INSUFFICIENT_OBS, 2 INTERNAL_ERROR, 3 LIMIT.</field>
+      <field type="uint8_t" name="vel_type">The raw GPS velocity type. 0 VEL_NO_SOLUTION, 1 VEL_UNKNOWN_TYPE, 2 VEL_DOPPLER, 3 VEL_DIFFERENTIAL.</field>
+      <field type="uint32_t" name="gps_tow" units="ms">GPS Time of Week ms.</field>
+      <field type="float[3]" name="vel" units="m/s">Velocity in [North, East, Down] direction m/s.</field>
+      <field type="float[3]" name="vel_acc" units="m/s">1 sgima Accuracy in [North, East, Down] direction m/s.</field>
+      <field type="float" name="course">True direction of motion over ground (0 to 360 deg).</field>
+      <field type="float" name="course_acc">1 sgima course accuracy (0 to 360 deg).</field>
+    </message>    
+    <message id="637" name="SBG_GPS_HDT">
+      <description>SBG EKF EULER as reported by the SBG</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="uint16_t" name="status" units="us">GPS True Heading status. 0 SOL_COMPUTED, 1 INSUFFICIENT_OBS, 2 INTERNAL_ERROR, 3 HEIGHT_LIMIT.</field>
+      <field type="uint32_t" name="tow" units="ms">GPS Time of Week.</field>
+      <field type="float" name="true_heading" units="deg">True heading angle (0 to 360 deg).</field>
+      <field type="float" name="true_heading_acc" units="deg">1 sigma True heading estimated accuracy (0 to 360 deg).</field>
+      <field type="float" name="pitch">Pitch angle from the master to the rover.</field>
+      <field type="float" name="pitch_acc">1 sigma pitch estimated accuracy.</field>
+    </message>    
+    <message id="638" name="SBG_AIR_DATA">
+      <description>SBG EKF EULER as reported by the SBG</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp.</field>
+      <field type="uint32_t" name="time_stamp" units="us">Time since sensor is powered up us.</field>
+      <field type="uint8_t" name="is_delay_time">True if the time stamp field represents a delay instead of an absolute time stamp.</field>
+      <field type="uint8_t" name="pressure_valid">True if the pressure field is filled and valid.</field>
+      <field type="uint8_t" name="altitude_valid">True if the barometric altitude field is filled and valid.</field>
+      <field type="uint8_t" name="pressure_diff_valid">True if the differential pressure field is filled and valid.</field>
+      <field type="uint8_t" name="air_speed_valid">True if the true airspeed field is filled and valid.</field>
+      <field type="uint8_t" name="air_temperature_valid">True if the output air temperature field is filled and valid.</field>
+      <field type="float" name="pressure_abs">Raw absolute pressure measured by the barometer sensor in Pascals.</field>
+      <field type="float" name="altitude">Altitude computed from barometric altimeter in meters and positive upward.</field>
+      <field type="float" name="pressure_diff">Raw differential pressure measured by the pitot tube in Pascal.</field>
+      <field type="float" name="true_air_speed">True airspeed measured by a pitot tube in m.s-1 and positive forward.</field>
+      <field type="float" name="air_temperature">Outside air temperature in degrees C that could be used to compute true airspeed from differential pressure.</field>
+    </message>
   </messages>
 </mavlink>

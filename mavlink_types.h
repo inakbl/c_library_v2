@@ -68,7 +68,7 @@ typedef struct param_union {
  * The intention is that by replacing the is_double bit with 0 the type can be directly used as a double (as the is_double bit corresponds to the
  * lowest mantissa bit of a double). If is_double is 0 then mavlink_type gives the type in the union.
  * The mavlink_types.h header will also need to have shifts/masks to define the bit boundaries in the above,
- * as bitfield ordering isn't consistent between platforms. The above is intended to be for gcc on x86,
+ * as bitfield ordering isn’t consistent between platforms. The above is intended to be for gcc on x86,
  * which should be the same as gcc on little-endian arm. When using shifts/masks the value will be treated as a 64 bit unsigned number,
  * and the bits pulled out using the shifts/masks.
 */
@@ -281,9 +281,8 @@ typedef struct __mavlink_signing_streams {
 typedef struct __mavlink_msg_entry {
 	uint32_t msgid;
 	uint8_t crc_extra;
-        uint8_t min_msg_len;       // minimum message length
-        uint8_t max_msg_len;       // maximum message length (e.g. including mavlink2 extensions)
-        uint8_t flags;             // MAV_MSG_ENTRY_FLAG_*
+	uint8_t msg_len;
+	uint8_t flags;             // MAV_MSG_ENTRY_FLAG_*
 	uint8_t target_system_ofs; // payload offset to target_system, or 0
 	uint8_t target_component_ofs; // payload offset to target_component, or 0
 } mavlink_msg_entry_t;
